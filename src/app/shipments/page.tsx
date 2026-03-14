@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import AdminWrapper from '@/components/AdminWrapper';
 import { 
   Package, 
@@ -18,7 +18,7 @@ import {
 import { adminApi } from '@/services/adminApi';
 import { useSearchParams } from 'next/navigation';
 
-export default function ShipmentsPage() {
+function ShipmentsContent() {
   const [shipments, setShipments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -460,7 +460,7 @@ export default function ShipmentsPage() {
         {/* Update Status Modal */}
         {isUpdateModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <div className="apple-card w-full max-w-md p-8 border-white/20 bg-[#0B1120]">
+            <div className="apple-card w-full max-md p-8 border-white/20 bg-[#0B1120]">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-white">Update Tracking</h2>
                 <button onClick={() => setIsUpdateModalOpen(false)} className="text-secondary hover:text-white"><X /></button>
@@ -507,5 +507,19 @@ export default function ShipmentsPage() {
         )}
       </div>
     </AdminWrapper>
+  );
+}
+
+export default function ShipmentsPage() {
+  return (
+    <Suspense fallback={
+      <AdminWrapper>
+        <div className="h-96 flex items-center justify-center text-primary">
+          <Loader2 className="w-10 h-10 animate-spin" />
+        </div>
+      </AdminWrapper>
+    }>
+      <ShipmentsContent />
+    </Suspense>
   );
 }
