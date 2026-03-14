@@ -221,7 +221,7 @@ function ShipmentsContent() {
                     <button 
                       onClick={() => handleDeleteShipment(shipment._id)}
                       className="p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-500 transition-all border border-red-500/10"
-                      title="Move to History"
+                      title={activeTab === 'active' ? "Move to History" : "Permanently Delete"}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
