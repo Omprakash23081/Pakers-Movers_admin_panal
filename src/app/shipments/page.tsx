@@ -103,16 +103,28 @@ function ShipmentsContent() {
   };
 
   const handleDeleteShipment = async (id: string) => {
-    if (!confirm("Move this shipment to history?")) return;
+    const shipment = shipments.find(s => s._id === id);
+    const isAlreadyInHistory = shipment?.isDeleted || shipment?.currentStatus === 'delivered';
+    
+    const message = isAlreadyInHistory 
+      ? "Permanently delete this shipment record? This action cannot be undone."
+      : "Move this shipment to history?";
+      
+    if (!confirm(message)) return;
+    
     try {
-      const resp = await adminApi.deleteShipment(id);
+      const resp = await adminApi.deleteShipment(id, isAlreadyInHistory);
       if (resp.success) {
-        setShipments(shipments.map(s => s._id === id ? { ...s, isDeleted: true } : s));
+        if (isAlreadyInHistory) {
+          setShipments(shipments.filter(s => s._id !== id));
+        } else {
+          setShipments(shipments.map(s => s._id === id ? { ...s, isDeleted: true } : s));
+        }
       } else {
         alert(resp.message || "Something went wrong");
       }
     } catch (err: any) {
-      alert("Error moving to history: " + (err.message || "Unknown error"));
+      alert("Error: " + (err.message || "Unknown error"));
     }
   };
 

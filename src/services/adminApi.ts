@@ -62,8 +62,8 @@ export const adminApi = {
     return data;
   },
 
-  deleteShipment: async (id: string) => {
-    const res = await fetch(`${BASE_URL}/shipments/${id}`, {
+  deleteShipment: async (id: string, permanent = false) => {
+    const res = await fetch(`${BASE_URL}/shipments/${id}${permanent ? '?permanent=true' : ''}`, {
       method: 'DELETE',
       headers: getHeaders(),
     });
