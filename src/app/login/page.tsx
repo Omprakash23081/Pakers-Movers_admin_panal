@@ -52,7 +52,7 @@ export default function LoginPage() {
               <Package className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-3xl font-bold text-white tracking-tight">Admin Portal</h1>
-            <p className="text-secondary mt-1">Raj Packers & Movers</p>
+            <p className="text-secondary mt-1">SSD Packers & Movers</p>
           </div>
 
           {error && (

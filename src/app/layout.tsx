@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Raj Packers & Movers | Admin",
-  description: "Secure Admin Panel for Raj Packers & Movers",
+  title: "SSD Packers & Movers | Admin",
+  description: "Secure Admin Panel for SSD Packers & Movers",
 };
 
 export default function RootLayout({

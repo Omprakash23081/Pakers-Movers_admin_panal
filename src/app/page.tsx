@@ -70,7 +70,7 @@ export default function Dashboard() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold text-white tracking-tight">System Overview</h1>
-            <p className="text-secondary mt-1">Manage Raj Packers & Movers operations efficiently.</p>
+            <p className="text-secondary mt-1">Manage SSD Packers & Movers operations efficiently.</p>
           </div>
           <Link href="/quotes" className="px-6 py-2.5 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
             <Package className="w-5 h-5" />

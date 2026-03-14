@@ -60,7 +60,7 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
           </div>
           {isSidebarOpen && (
             <div className="flex flex-col">
-              <span className="font-bold text-lg leading-none">Raj Admin</span>
+              <span className="font-bold text-lg leading-none">SSD Admin</span>
               <span className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Packers & Movers</span>
             </div>
           )}
@@ -101,7 +101,7 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
         <header className="lg:hidden p-4 border-b border-white/10 flex justify-between items-center">
             <div className="flex items-center gap-2">
                 <Package className="w-6 h-6 text-primary" />
-                <span className="font-bold">Raj Admin</span>
+                <span className="font-bold">SSD Admin</span>
             </div>
             <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2">
                 {isSidebarOpen ? <X /> : <Menu />}
