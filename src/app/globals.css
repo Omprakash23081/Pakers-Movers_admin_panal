@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0B1120;
+  --color-section: #111827;
+  --color-card: #1F2937;
+  --color-foreground: #F9FAFB;
+  --color-secondary: #9CA3AF;
+  --color-muted: #6B7280;
+  --color-primary: #3B82F6;
+  --color-accent: #F97316;
+  --color-border: #1F2937;
+  
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-apple: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground tracking-tight antialiased selection:bg-primary/30 selection:text-primary transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glass;
+  }
+
+  .apple-card {
+    @apply rounded-2xl bg-white/5 shadow-apple border border-white/5 transition-all duration-300 hover:shadow-lg hover:border-white/10;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
