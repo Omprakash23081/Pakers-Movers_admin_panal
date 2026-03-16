@@ -132,5 +132,15 @@ export const adminApi = {
       headers: getHeaders(),
     });
     return res.json();
+  },
+
+  // Security
+  changePassword: async (passwordData: any) => {
+    const res = await fetch(`${BASE_URL}/auth/change-password`, {
+      method: 'PUT',
+      headers: getHeaders(),
+      body: JSON.stringify(passwordData),
+    });
+    return res.json();
   }
 };

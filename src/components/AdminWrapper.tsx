@@ -102,7 +102,7 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen overflow-auto">
-        <header className="lg:hidden p-4 border-b border-white/10 flex justify-between items-center">
+        <header className="lg:hidden sticky top-0 bg-background/80 backdrop-blur-xl z-50 p-4 border-b border-white/10 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="relative w-8 h-8 rounded-lg overflow-hidden shadow-sm shadow-primary/20 shrink-0 border border-primary/20">
               <img
@@ -111,10 +111,10 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="font-bold">Sunita Admin</span>
+            <span className="font-bold text-white">Sunita Admin</span>
           </div>
-          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2">
-            {isSidebarOpen ? <X /> : <Menu />}
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 text-white hover:bg-white/10 rounded-lg">
+            {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </header>
 

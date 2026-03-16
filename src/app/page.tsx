@@ -164,7 +164,7 @@ export default function Dashboard() {
               <div className="flex flex-col items-center gap-2">
                 {[
                   { label: 'Total Inquiries', count: stats?.stats?.totalQuotes, color: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
-                  { label: 'Converted', count: stats?.stats?.statusBreakdown?.find((s:any) => s._id === 'converted')?.count || 0, color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
+                  { label: 'Approved', count: stats?.stats?.statusBreakdown?.find((s:any) => s._id === 'converted')?.count || 0, color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
                   { label: 'Shipments', count: (stats?.stats?.activeShipments || 0) + (stats?.stats?.deliveredShipments || 0), color: 'bg-purple-500/20 text-purple-400 border-purple-500/30' }
                 ].map((step, idx) => (
                   <React.Fragment key={step.label}>
@@ -223,7 +223,7 @@ export default function Dashboard() {
                               ${quote.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' : 
                                 quote.status === 'converted' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 
                                 'bg-blue-500/10 text-blue-500 border-blue-500/20'}`}>
-                              {quote.status}
+                              {quote.status === 'converted' ? 'Approved' : quote.status}
                             </span>
                           </td>
                           <td className="px-6 py-4 text-right text-sm text-muted-foreground font-medium whitespace-nowrap">

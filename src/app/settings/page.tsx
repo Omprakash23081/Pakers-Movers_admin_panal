@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import AdminWrapper from '@/components/AdminWrapper';
+import { adminApi } from '@/services/adminApi';
 import { 
   Settings, 
   Lock, 
@@ -36,13 +37,19 @@ export default function SettingsPage() {
     }
 
     try {
-      // Placeholder for password change API call
-      // In a real app, we would call adminApi.changePassword()
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call
-      setSuccess(true);
-      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      const res = await adminApi.changePassword({
+        currentPassword: passwordData.currentPassword,
+        newPassword: passwordData.newPassword
+      });
+
+      if (res.success || res.message === 'Password updated successfully') {
+        setSuccess(true);
+        setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      } else {
+        setError(res.message || "Failed to update password. Incorrect current password?");
+      }
     } catch (err) {
-      setError("Failed to update password. Please try again.");
+      setError("Failed to connect to server. Please try again.");
     } finally {
       setLoading(false);
     }
