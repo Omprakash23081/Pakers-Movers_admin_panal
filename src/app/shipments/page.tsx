@@ -36,14 +36,16 @@ function ShipmentsContent() {
     estimatedDelivery: '',
     driverName: '',
     driverPhone: '',
-    vehicleNumber: ''
+    vehicleNumber: '',
+    locationLink: ''
   });
 
   // Form states for update
   const [updateData, setUpdateData] = useState({
     location: '',
     status: '',
-    currentStatus: ''
+    currentStatus: '',
+    locationLink: ''
   });
 
   const searchParams = useSearchParams();
@@ -135,7 +137,7 @@ function ShipmentsContent() {
       if (resp.success) {
         setShipments(shipments.map(s => s._id === selectedShipment._id ? resp.data : s));
         setIsUpdateModalOpen(false);
-        setUpdateData({ location: '', status: '', currentStatus: '' });
+        setUpdateData({ location: '', status: '', currentStatus: '', locationLink: '' });
       }
     } catch (err) {
       alert("Error updating shipment");
@@ -228,7 +230,12 @@ function ShipmentsContent() {
                     <button 
                       onClick={() => {
                         setSelectedShipment(shipment);
-                        setUpdateData({ location: '', status: '', currentStatus: shipment.currentStatus });
+                        setUpdateData({ 
+                          location: '', 
+                          status: '', 
+                          currentStatus: shipment.currentStatus,
+                          locationLink: shipment.locationLink || ''
+                        });
                         setIsUpdateModalOpen(true);
                       }}
                       className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-white transition-all border border-white/5"
@@ -283,6 +290,17 @@ function ShipmentsContent() {
                                title="Call Driver"
                              >
                                <Phone className="w-3.5 h-3.5" />
+                             </a>
+                           )}
+                           {shipment.locationLink && (
+                             <a 
+                               href={shipment.locationLink}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="w-7 h-7 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all shadow-[0_0_10px_rgba(16,185,129,0.2)]"
+                               title="Live Location"
+                             >
+                               <MapPin className="w-3.5 h-3.5" />
                              </a>
                            )}
                          </div>
@@ -402,15 +420,27 @@ function ShipmentsContent() {
                       />
                     </div>
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-secondary uppercase">Vehicle / Car Number</label>
-                    <input 
-                      type="text" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-white outline-none focus:border-primary"
-                      placeholder="e.g. MH-31-AB-1234"
-                      value={newShipment.vehicleNumber}
-                      onChange={e => setNewShipment({...newShipment, vehicleNumber: e.target.value.toUpperCase()})}
-                    />
+                   <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-secondary uppercase">Vehicle / Car Number</label>
+                      <input 
+                        type="text" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-white outline-none focus:border-primary"
+                        placeholder="e.g. MH-31-AB-1234"
+                        value={newShipment.vehicleNumber}
+                        onChange={e => setNewShipment({...newShipment, vehicleNumber: e.target.value.toUpperCase()})}
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-secondary uppercase">Live Location Link</label>
+                      <input 
+                        type="url" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-white outline-none focus:border-primary"
+                        placeholder="https://maps.app.goo.gl/..."
+                        value={newShipment.locationLink}
+                        onChange={e => setNewShipment({...newShipment, locationLink: e.target.value})}
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -502,7 +532,7 @@ function ShipmentsContent() {
                     onChange={e => setUpdateData({...updateData, location: e.target.value})}
                   />
                 </div>
-                <div className="space-y-1">
+                 <div className="space-y-1">
                   <label className="text-xs font-bold text-secondary uppercase">Activity Update</label>
                   <input 
                     type="text" 
@@ -510,6 +540,16 @@ function ShipmentsContent() {
                     placeholder="e.g. Arrived at Pune Hub"
                     value={updateData.status}
                     onChange={e => setUpdateData({...updateData, status: e.target.value})}
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-secondary uppercase">Update Live Location Link</label>
+                  <input 
+                    type="url" 
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-white outline-none focus:border-primary"
+                    placeholder="New tracking link..."
+                    value={updateData.locationLink}
+                    onChange={e => setUpdateData({...updateData, locationLink: e.target.value})}
                   />
                 </div>
                 <button type="submit" className="w-full py-3 bg-primary text-white font-bold rounded-xl mt-6">Update Journey</button>

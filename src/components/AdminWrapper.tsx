@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Truck, 
-  Users, 
-  Settings, 
-  LogOut, 
-  Menu, 
+import {
+  LayoutDashboard,
+  FileText,
+  Truck,
+  Users,
+  Settings,
+  LogOut,
+  Menu,
   X,
   ChevronRight,
   Package,
@@ -55,13 +55,17 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
         overflow-hidden flex flex-col
       `}>
         <div className="p-6 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/30">
-            <Package className="w-6 h-6 text-primary" />
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary/20 shrink-0 border border-primary/20">
+            <img
+              src="/favicon.ico"
+              alt="Sunita Admin Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
           {isSidebarOpen && (
             <div className="flex flex-col">
-              <span className="font-bold text-lg leading-none">SSD Admin</span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Packers & Movers</span>
+              <span className="font-bold text-lg leading-none">Sunita Admin</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Cargo Packers & Movers</span>
             </div>
           )}
         </div>
@@ -75,8 +79,8 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
                 href={item.href}
                 className={`
                   flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group
-                  ${isActive 
-                    ? 'bg-primary/20 text-primary border border-primary/30' 
+                  ${isActive
+                    ? 'bg-primary/20 text-primary border border-primary/30'
                     : 'hover:bg-white/5 text-secondary hover:text-foreground'}
                 `}
               >
@@ -99,24 +103,30 @@ export default function AdminWrapper({ children }: { children: React.ReactNode }
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen overflow-auto">
         <header className="lg:hidden p-4 border-b border-white/10 flex justify-between items-center">
-            <div className="flex items-center gap-2">
-                <Package className="w-6 h-6 text-primary" />
-                <span className="font-bold">SSD Admin</span>
+          <div className="flex items-center gap-2">
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden shadow-sm shadow-primary/20 shrink-0 border border-primary/20">
+              <img
+                src="/favicon.ico"
+                alt="Sunita Admin Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2">
-                {isSidebarOpen ? <X /> : <Menu />}
-            </button>
+            <span className="font-bold">Sunita Admin</span>
+          </div>
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2">
+            {isSidebarOpen ? <X /> : <Menu />}
+          </button>
         </header>
 
         <main className="p-4 lg:p-8 flex-1 max-w-7xl w-full mx-auto">
           {children}
         </main>
       </div>
-      
+
       {/* Mobile Overlay */}
       {isSidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black/60 lg:hidden z-30" 
+        <div
+          className="fixed inset-0 bg-black/60 lg:hidden z-30"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}

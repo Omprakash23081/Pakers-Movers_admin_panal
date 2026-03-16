@@ -49,10 +49,15 @@ export default function LoginPage() {
         <div className="glass-panel apple-card p-8 lg:p-10">
           <div className="flex flex-col items-center mb-10 text-center">
             <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center border border-primary/30 mb-4 shadow-lg shadow-primary/20">
-              <Package className="w-8 h-8 text-primary" />
+              <svg viewBox="0 0 40 40" className="w-10 h-10 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 18H3M21 18h-2M5 22H3M21 22h-2m1 1h4l3 7h-11l1-3m1-4l1-3h4l2 5m-7-5v-1a2 2 0 012-2h1a2 2 0 012 2v1m-6 1h6" />
+                <rect x="7" y="15" width="12" height="10" rx="1" />
+                <circle cx="10" cy="30" r="3" />
+                <circle cx="16" cy="30" r="3" />
+              </svg>
             </div>
             <h1 className="text-3xl font-bold text-white tracking-tight">Admin Portal</h1>
-            <p className="text-secondary mt-1">SSD Packers & Movers</p>
+            <p className="text-secondary mt-1">Sunita Cargo Packers Movers</p>
           </div>
 
           {error && (

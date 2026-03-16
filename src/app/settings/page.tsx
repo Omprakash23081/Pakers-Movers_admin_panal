@@ -139,11 +139,16 @@ export default function SettingsPage() {
             <div className="apple-card p-8 border-white/10 space-y-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-white font-bold">SSD Packers & Movers Admin Portal</p>
-                  <p className="text-sm text-secondary">Version 1.0.0 (Production)</p>
+                  <p className="text-white font-bold">Sunita Cargo Packers Movers Admin Portal</p>
+                  <p className="text-sm text-secondary">Version 1.0.1 (Production)</p>
                 </div>
                 <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/30">
-                  <Package className="w-6 h-6 text-primary" />
+                  <svg viewBox="0 0 40 40" className="w-7 h-7 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 18H3M21 18h-2M5 22H3M21 22h-2m1 1h4l3 7h-11l1-3m1-4l1-3h4l2 5m-7-5v-1a2 2 0 012-2h1a2 2 0 012 2v1m-6 1h6" />
+                    <rect x="7" y="15" width="12" height="10" rx="1" />
+                    <circle cx="10" cy="30" r="3" />
+                    <circle cx="16" cy="30" r="3" />
+                  </svg>
                 </div>
               </div>
 

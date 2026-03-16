@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SSD Packers & Movers | Admin",
-  description: "Secure Admin Panel for SSD Packers & Movers",
+  title: "Sunita Cargo Packers Movers | Admin",
+  description: "Secure Admin Panel for Sunita Cargo Packers Movers",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-background`}>
         {children}
       </body>
